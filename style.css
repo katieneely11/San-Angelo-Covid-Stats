@@ -1,0 +1,66 @@
+/* style.css */
+     html {
+     height: 100%;
+    } 
+    body {
+      height: 100%;
+      color: #e6b800;
+    }
+     #header {
+         border: 1px solid blue;
+       	 text-align: center;
+       	 margin: 0px 0px;
+         font-size:40px;
+         height: 10%;
+         background-color: blue;
+      	}
+     #headertwo {
+         border: 1px solid black;
+       	 text-align: center;
+       	 margin: 20px 1px 1px 1px;
+         font-size:10px;
+         height: 20%;
+     	}
+     #info-input {
+     	border:1px solid black;
+        float: left;
+        margin-top: 30px;
+        margin-left: 1px;
+        height: 34%;
+        width: 45%;
+        background-color: blue;
+     	}
+      h2 {
+       text-align: center;
+      }
+     #email {
+     	border:1px solid black;
+        float: left;
+        margin-top: 10px;
+        margin-left: 1px;
+        height: 34%;
+        width: 45%;
+        clear:left;
+        background-color:blue;
+     }
+     #demographics {
+     	border:1px solid black;
+        float: right;
+        margin-top: 30px;
+        height: 69%;
+        width: 50%;
+     }
+    #button {
+      position: relative;
+      left: 45%;
+    }
+    #button2 {
+      position: relative;
+      left: 45%;
+    }
+    #email p {
+      font-size:20px;
+    }
+    .emailSelect {
+      text-align: center;
+    }
