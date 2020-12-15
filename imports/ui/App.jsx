@@ -5,77 +5,8 @@ import { totalAgeGenderCollection } from '/imports/db/AgeGenderCollection';
 import { AgeGenderGroup } from '/imports/ui/AgeGender.jsx';
 import { useTracker } from 'meteor/react-meteor-data';
 
-export const App = () => (
-  const maleAgeGenderData =  useTracker(() => maleAgeGenderCollection.find({}).fetch());
- const femaleAgeGenderData =  useTracker(() => femaleAgeGenderCollection.find({}).fetch());
- const totalAgeGenderData =  useTracker(() => totalAgeGenderCollection.find({}).fetch());
- 
- // collect references to user input boxes
- var button = document.getElementById("button");
- var button2 = document.getElementById("button2");
- var email = document.getElementById("emailBox");
- var emailType = document.getElementById("emailType");
-
- // style the email input box
- email.style.height = "20px";
- email.style.width = "200px";
-
- // Function to collect info from "Enter Info" box
- var onButtonClick = function() {
-   var age = document.getElementById("age").value;
-   var gender = document.getElementById("gender").value;
-   calculateResults(age,gender);
- };
- // Function to collect info from email submit box
- var onButton2Click = function() {
-    var userEmail = document.getElementById("emailBox").value;
-    var userEmailChoice = document.getElementById("emailType").value;
-    var emailText = document.getElementById("emailText");
-    if (userEmailChoice === "alerts") {
-      // call function for adding email to email list (not made yet)
-      emailText.textContent = userEmail + " added to emailing list! You will be notified when new COVID-19 data is received by us.";
-    }
-    else {
-      // call function for sending one time email to user containing graphical data (not made yet)
-      emailText.textContent = "Graphical charts sent to " + userEmail + "!";
-    }
- };
- var calculateResults = function(age, gender) {
-   var results = document.getElementById("results");
-   var posInArray = 0;
-    if (age === "11-20") {
-	    posInArray = 1;
-    }
-    else if (age === "21-30") {
-		posInArray = 2;
-    }
-	else if (age === "31-40") {
-		posInArray = 3;
-	}
-	else if (age === "41-50") {
-		posInArray = 4;
-	}
-	else if (age === "51-60") {
-		posInArray = 5;
-	}
-	else if (age === "61+") {
-		posInArray = 6;
-	}
-	
-   if (gender === "male") {
-	   results.textContent = " " + toString((maleAgeGenderData[posInArray] / totalAgeGenderData[posInArray]) * 100) + "%";
-   }
-   else {
-	   results.textContent = " " + toString((femaleAgeGenderData[posInArray] / totalAgeGenderData[posInArray]) * 100) + "%";
-   }
- };
- 
- // event listener for "Enter Info" submit button
- button.addEventListener("click",onButtonClick);
-
- // event listener for email submit button
- button2.addEventListener("click",onButton2Click);
- 
+export const App = () => {
+  const totalCases = useTracker(() => totalAgeGenderCollection.find({}).fetch());
   return (
   <div>
   <h1 id ="header">San Angelo COVID-19 Statistics</h1>
@@ -86,7 +17,24 @@ export const App = () => (
     </div>
 	
 	<div id = "demographics">
-    <h1>Insert More Graphs Here</h1>
+		<div id = "demo-labels">
+		<h2>Total Cases (Age Ranges/Number Of Cases): </h2>
+		   <ul>
+			<li>0-10: </li>
+			<li>11-20: </li>
+			<li>21-30: </li> 
+			<li>31-40: </li>
+			<li>41-50: </li>
+			<li>51-60: </li>
+			<li>61+: </li>
+			<li>Total: </li>
+			</ul>
+		</div>
+		<div id = "demos">
+			<ul>
+			{ totalCases.map(agegendergroup => <AgeGenderGroup key={ agegendergroup._id } agegendergroup = { agegendergroup }/>) }
+			</ul>
+		</div>
     </div>
 	
 	<div id="info-input">
@@ -136,4 +84,4 @@ export const App = () => (
     </div>
   </div>
   );
-);
+  };

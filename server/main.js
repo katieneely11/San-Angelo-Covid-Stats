@@ -31,7 +31,7 @@ Meteor.startup(() => {
 		 61,
 		 48,
 		 44,
-		 44,
+		 44, 
 		 333
 		].forEach(initializeFemaleAgeGender);
 	}

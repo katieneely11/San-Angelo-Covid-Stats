@@ -5,6 +5,7 @@
     body {
       height: 100%;
       color: #e6b800;
+	  background-image: url('https://i.ibb.co/Fw48Kzk/Dwntwnsa.jpg');
     }
      #header {
          border: 1px solid blue;
@@ -20,6 +21,7 @@
        	 margin: 20px 1px 1px 1px;
          font-size:10px;
          height: 200px;
+		 background-color: blue;
      	}
      #info-input {
      	border:1px solid black;
@@ -49,6 +51,7 @@
         margin-top: 30px;
         height: 450px;
         width: 50%;
+		background-color: blue;
      }
     #button {
       position: relative;
@@ -64,3 +67,8 @@
     .emailSelect {
       text-align: center;
     }
+	#demo-labels {
+	}
+	#demos {
+		display: inline-block;
+	}
